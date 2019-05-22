@@ -1,0 +1,14 @@
+#熔断器开启
+feign:
+  hystrix:
+    enabled : true
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+server:
+  port: 8766
+spring:
+  application:
+    name: service-feign
