@@ -1,0 +1,46 @@
+spring:
+    cloud:
+        config:
+            label: master
+            profile: dev  # 配置版本 开发环境
+            url: http://localhost:8888/  # 配置服务器的地址
+            name: eureka-server
+            retry:   # 配置重试，默认是重试6次，最初是延迟1s再次重试，如果再失败，则延迟1.1*1s、1.1*1.1*1s、 可以使用这个配置
+                initial-interval: 2000
+                # 最多重试次数
+                max-attempts: 6
+                # 最大重试间隔
+                max-interval: 4000
+                # 每次重试时间是之前的倍数
+                multiplier: 1.2
+
+
+#  spring:
+#  application:
+#    name: eureka
+#  profiles:
+#    active: server1
+#---
+#server:
+#    port: 8761
+#eureka:
+#    instance:
+#        hostname: server1
+#    client:
+#        # 表示是否注册自身到eureka服务器
+#        register-with-eureka: false
+#        # 是否从eureka上获取注册信息
+#        # fetch-registry: false
+#        service-url:
+#            defaultZone: http://server2:8762/eureka/
+#---
+#server:
+#    port: 8762
+#    eureka:
+#        instance:
+#            hostname: server2
+#        client:
+#            register-with-eureka: false
+#            #fetch-registry: false
+#            service-url:
+#                defaultZone: http://server1:8761/eureka/
