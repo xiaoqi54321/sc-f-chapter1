@@ -1,17 +1,10 @@
 
-#spring.application.name=config-server
-#server.port=8888
-#
-#
-#spring.cloud.config.server.git.uri=https://github.com/xiaoqi54321/warfarin.git
-#spring.cloud.config.server.git.searchPaths=respo
-#spring.cloud.config.label=master
-#spring.cloud.config.server.git.basedir=F:\idea2019\server-core\warfarin\shared
-#spring.cloud.config.server.git.force-pull=true
-#spring.cloud.config.server.git.username=tmh1128@foxmail.com
-#spring.cloud.config.server.git.password=tianhao0907
-
+server:
+  post: 8888
 spring:
+  client:
+    serviceUrl:
+      defaultZone: http://server1:8761/eureka/
   application:
     name: config-server
   cloud:
@@ -25,10 +18,9 @@ spring:
           username: tmh1128@foxmail.com
           passeord: tianhao0907
         searchPaths: respo
-server:
-  post: 8888
+
 
 eureka:
   client:
     serviceUrl:
-      defaultZone: http://eureka-serve-01:8761/eureka/
+      defaultZone: http://server1:8761/eureka/
